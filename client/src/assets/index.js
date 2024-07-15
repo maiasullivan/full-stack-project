@@ -1,0 +1,1 @@
+export { default as LoginBG } from "./images/bg.jpg";

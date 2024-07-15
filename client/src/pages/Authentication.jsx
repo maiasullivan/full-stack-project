@@ -9,19 +9,21 @@ const Authentication = () => {
             background: `url(${LoginBG})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
         }}
-        className="w-screen h-screen flex justify-center px-4 py-6"
+        className="w-screen h-screen flex items-center justify-center px-4 py-6"
         >
             <div className="w-full lg:w-96 px-4 py-6 rounded-md backdrop-blur-md flex 
-            items-center justify-center flex-col">
-                <p className="text-2xl">Welcome Back!</p>
-                <p>Sign in to access your store</p>
+            items-center justify-center flex-col gap-8">
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="text-2xl text-gray-400">Welcome Back!</p>
+                    <p className="text-lg text-gray-500">Sign in to access your store</p>
+                </div>
 
                 <div className="w-full px-4 py-3 flex items-center justify-center 
-                border border-gray-400 cursor-pointer rounded-md">
+                border border-gray-400 bg-slate-100 cursor-pointer rounded-md active:scale-95 transition-all duration-150 ease-in-out">
                     <FcGoogle className="text-2xl" />
-                    <p>Sign in with Gmail</p>
+                    <p className="text-lg font-semibold text-gray-600">Sign in with Gmail</p>
                 </div>
             </div>
     </div>

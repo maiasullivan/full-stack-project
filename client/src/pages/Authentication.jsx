@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { LoginBG } from "../assets";
 import { FcGoogle } from "react-icons/fc"
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
+import { auth } from '../config/firebase.config';
+
 
 const Authentication = () => {
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleLoginAction = useCallback(async () => {
+        try {
+            const userCred = await signInWithRedirect(auth, googleProvider);
+            if (userCred) {
+                console.log(userCred);
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    }, [])
+
   return (
     <div
         style={{
@@ -20,7 +37,7 @@ const Authentication = () => {
                     <p className="text-lg text-gray-500">Sign in to access your store</p>
                 </div>
 
-                <div className="w-full px-4 py-3 flex items-center justify-center 
+                <div onClick={handleLoginAction} className="w-full px-4 py-3 flex items-center justify-center 
                 border border-gray-400 bg-slate-100 cursor-pointer rounded-md active:scale-95 transition-all duration-150 ease-in-out">
                     <FcGoogle className="text-2xl" />
                     <p className="text-lg font-semibold text-gray-600">Sign in with Gmail</p>

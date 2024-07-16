@@ -1,9 +1,21 @@
-import React, {Suspense} from 'react'
+import React, {Suspense, useEffect} from 'react'
 import {Routes, Route} from "react-router-dom"
 import {Layout, AdminLayout, AuthLayout} from '../layouts';
 import { AdminHome, Authentication, Home, UserProfile } from '../pages';
+import { auth } from "../config/firebase.config";
 
 const App = () => {
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((userCred) => {
+            if (userCred) {
+                userCred.getIdToken().then((token) => {
+                    console.log(token);
+                });
+            }
+        });
+
+        return () => unsubscribe();
+    }, [])
   return (
     <Suspense fallback={<div>Loading...</div>}>
         <Routes>

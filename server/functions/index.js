@@ -25,6 +25,7 @@ exports.validateUserJWToken = functions.https.onRequest(async(request, response)
         try {
             const decodedToken = await admin.auth().verifyIdToken(token);
             if (decodedToken) {
+                console.log("Token: ", token);
                 return response.status(200).json({success : true, user : decodedToken});
             }
         }catch(error) {

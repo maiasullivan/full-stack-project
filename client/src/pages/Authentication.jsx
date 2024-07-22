@@ -15,6 +15,7 @@ const Authentication = () => {
         const fetchRedirectResult = async () => {
             try {
                 const result = await getRedirectResult(auth);
+                console.log("Hi")
                 if (result) {
                     console.log(result);
                 }
